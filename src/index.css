@@ -2,30 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .my-container {
-    @apply px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-6 lg:py-8;
-  }
-  .active {
-    @apply px-2 py-1 font-normal tracking-wide text-gray-800 transition-colors duration-200 border-b-2 border-[#7fb71e] hover:text-gray-500;
-  }
-  
-  .default {
-    @apply px-2 py-1 font-normal tracking-wide text-gray-800 transition-colors duration-200 hover:border-b-2 border-[#7fb71e] hover:text-gray-500;
-  }
+  @apply px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-6 lg:py-8;
+}
+.active {
+  @apply px-2 py-1 font-medium tracking-wide text-gray-800 transition-colors duration-200 border-b-2 border-[#7fb71e] hover:text-gray-500;
+}
 
+.default {
+  @apply px-2 py-1 font-medium tracking-wide text-gray-800 transition-colors duration-200 hover:border-b-2 border-[#7fb71e] hover:text-gray-500;
+}
 
-  .arrow-btn {
-    @apply bg-transparent border-[#7fb71e]  text-[#7fb71e] border-2 btn btn-circle hover:bg-[#7fb71e] hover:text-white hover:border-[#7fb71e]
-  }
-  
-  .btn-primary {
-    @apply px-4 py-2 text-white bg-red-500 border border-red-500 rounded shadow hover:bg-red-600 hover:text-white hover:shadow-lg hover:border-transparent;
-  }
-  
-  .input-style {
+.arrow-btn {
+  @apply bg-transparent border-[#7fb71e]  text-[#7fb71e] border-2 btn btn-circle hover:bg-[#7fb71e] hover:text-white hover:border-[#7fb71e];
+}
+
+.btn-primary {
+  @apply px-4 py-2 text-white bg-red-500 border border-red-500 rounded shadow hover:bg-red-600 hover:text-white hover:shadow-lg hover:border-transparent;
+}
+
+/* .input-style {
     @apply w-2/4 p-3 mt-5 text-sm border-b-2 rounded shadow-md focus-visible:outline-none focus:border-red-500 pe-12 border-gray-50;
-  }
-  .outline-btn{
-    @apply px-4 py-2 text-red-500 bg-transparent border border-red-500 rounded shadow hover:bg-red-500 hover:text-white hover:shadow-lg hover:border-transparent
-  }
+  } */
+
+.input-style {
+  @apply w-full focus-visible:outline-[#7fb71e] input input-bordered border-[#7fb71e] input-primary;
+}
+
+.login-btn {
+  @apply block w-full px-5 py-3 mb-2 mr-2 font-medium text-center text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300;
+}
+
+.outline-btn {
+  @apply px-4 py-2 text-red-500 bg-transparent border border-red-500 rounded shadow hover:bg-red-500 hover:text-white hover:shadow-lg hover:border-transparent;
+}
