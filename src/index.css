@@ -7,11 +7,16 @@
     @apply px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-6 lg:py-8;
   }
   .active {
-    @apply px-2 py-1 font-medium tracking-wide text-white transition-colors duration-200 bg-red-500 rounded hover:text-gray-200;
+    @apply px-2 py-1 font-normal tracking-wide text-gray-800 transition-colors duration-200 border-b-2 border-[#7fb71e] hover:text-gray-500;
   }
   
   .default {
-    @apply px-2 py-1 font-medium tracking-wide text-gray-800 transition-colors duration-200 rounded hover:text-white hover:bg-red-500;
+    @apply px-2 py-1 font-normal tracking-wide text-gray-800 transition-colors duration-200 hover:border-b-2 border-[#7fb71e] hover:text-gray-500;
+  }
+
+
+  .arrow-btn {
+    @apply bg-transparent border-[#7fb71e]  text-[#7fb71e] border-2 btn btn-circle hover:bg-[#7fb71e] hover:text-white hover:border-[#7fb71e]
   }
   
   .btn-primary {
