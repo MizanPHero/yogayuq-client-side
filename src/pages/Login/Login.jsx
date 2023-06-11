@@ -60,9 +60,9 @@ const Login = () => {
             </p>
 
             <div>
-              <label className="label">
+              {/* <label className="label">
                 <span className="text-base label-text">Email</span>
-              </label>
+              </label> */}
               <input
                 name="email"
                 type="email"
@@ -73,9 +73,9 @@ const Login = () => {
             </div>
 
             <div className="relative">
-              <label className="label">
+              {/* <label className="label">
                 <span className="text-base label-text">Password</span>
-              </label>
+              </label> */}
               <input
                 name="password"
                 type={showPassword ? "text" : "password"}
@@ -84,7 +84,7 @@ const Login = () => {
                 required
               />
               <div
-                className="absolute transform -translate-y-1/2 cursor-pointer right-2 top-[73%]"
+                className="absolute transform -translate-y-1/2 cursor-pointer right-2 top-1/2"
                 onClick={togglePasswordVisibility}
               >
                 <FontAwesomeIcon
