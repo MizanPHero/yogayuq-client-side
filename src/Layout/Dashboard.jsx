@@ -1,8 +1,10 @@
-import { FaceFrownIcon } from "@heroicons/react/24/solid";
+import { faBook, faCircleLeft, faHomeAlt, faHouse, faHouseUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     const isAdmin = true;
+    
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -21,9 +23,11 @@ const Dashboard = () => {
           <ul className="h-full p-4 menu w-80 bg-base-200 text-base-content">
           {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome">Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/manageclasses">Manage Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/manageusers">Manage Users</NavLink></li>
+                            <li><NavLink to="/dashboard/adminhome"><FontAwesomeIcon icon={faHouseUser} />Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/manageclasses"><FontAwesomeIcon icon={faBook} />Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers"><FontAwesomeIcon icon={faUsers} />Manage Users</NavLink></li>
+                            <li><NavLink to="/"><FontAwesomeIcon icon={faCircleLeft} />Back to Home Page</NavLink></li>
+
                             
                         </> : <>
                             <li><NavLink to="/">Home</NavLink></li>

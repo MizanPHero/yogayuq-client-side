@@ -27,7 +27,11 @@ const Registration = () => {
     setError("");
     const { name, email, password, photourl } = data;
 
-    if (password.length < 6 || !/[A-Z]/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
+    if (
+      password.length < 6 ||
+      !/[A-Z]/.test(password) ||
+      !/[^A-Za-z0-9]/.test(password)
+    ) {
       setError(
         "Your password must be at least 6 characters long, contain at least one capital letter, and one special character."
       );
@@ -57,30 +61,35 @@ const Registration = () => {
       displayName: name,
       photoURL: photoUrl,
     })
-    .then(() => {
-      const saveUser = { name: name, email: email, photo: photoUrl, role: "student" }
-      fetch('http://127.0.0.1:5000/users', {
-          method: 'POST',
+      .then(() => {
+        const saveUser = {
+          name: name,
+          email: email,
+          photo: photoUrl,
+          role: "student",
+        };
+        fetch("http://127.0.0.1:5000/users", {
+          method: "POST",
           headers: {
-              'content-type': 'application/json'
+            "content-type": "application/json",
           },
-          body: JSON.stringify(saveUser)
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created successfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate(from, { replace: true } || "/");
+            }
+          });
       })
-          .then(res => res.json())
-          .then(data => {
-              if (data.insertedId) {
-                  reset();
-                  Swal.fire({
-                      position: 'top-end',
-                      icon: 'success',
-                      title: 'User created successfully.',
-                      showConfirmButton: false,
-                      timer: 1500
-                  });
-                  navigate(from, { replace: true } || '/');
-              }
-          })
-  })
       .catch((error) => {
         console.log(error.message);
       });
@@ -90,8 +99,26 @@ const Registration = () => {
     googleSignIn()
       .then((result) => {
         const loggedInUser = result.user;
-        navigate(from, { replace: true });
+
+        const saveUser = {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          photo: loggedInUser.photoURL,
+          role: "student",
+        };
+
         console.log(loggedInUser);
+        fetch("http://127.0.0.1:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -154,7 +181,9 @@ const Registration = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 {errors.confirmPassword && (
-                  <span className="text-red-600">Confirm Password is required</span>
+                  <span className="text-red-600">
+                    Confirm Password is required
+                  </span>
                 )}
               </div>
 
