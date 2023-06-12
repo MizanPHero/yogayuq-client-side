@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 
 const router = createBrowserRouter([
@@ -50,10 +51,10 @@ const router = createBrowserRouter([
             path: 'adminhome',
             element: <AdminHome></AdminHome>
           },
-        //   {
-        //     path: 'allusers', 
-        //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-        //   },
+          {
+            path: 'manageusers', 
+            element: <ManageUsers></ManageUsers>
+          },
         //   {
         //     path: 'addItem',
         //     element: <AdminRoute><AddItem></AddItem></AdminRoute>
