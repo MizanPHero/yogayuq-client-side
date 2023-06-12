@@ -18,7 +18,7 @@ const Footer = () => {
             <Link to="/" className="items-center flex-1 inline-block">
               <img className="h-8" src={yogayuq} alt="" />
               <span className="text-2xl font-bold tracking-wide text-gray-800">
-                Toy Fusion
+               Yogayuq
               </span>
             </Link>
             <h5 className="mt-0 mb-2 text-lg text-blueGray-600">
