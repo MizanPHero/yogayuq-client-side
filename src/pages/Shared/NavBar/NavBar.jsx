@@ -46,14 +46,16 @@ const NavBar = () => {
               Classes
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Dashboard
-            </NavLink>
-          </li>
+          {user && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
 
           <li>
             {user ? (
@@ -121,67 +123,83 @@ const NavBar = () => {
                 {/* Mobile Nav Items Section */}
                 <nav>
                   <ul className="space-y-4">
-                  <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/instructors"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Instructors
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/classes"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Classes
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Dashboard
-            </NavLink>
-          </li>
+                    <li>
+                      <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                          isActive ? "active" : "default"
+                        }
+                      >
+                        Home
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/instructors"
+                        className={({ isActive }) =>
+                          isActive ? "active" : "default"
+                        }
+                      >
+                        Instructors
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/classes"
+                        className={({ isActive }) =>
+                          isActive ? "active" : "default"
+                        }
+                      >
+                        Classes
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) =>
+                          isActive ? "active" : "default"
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
 
-          <li>
-            {user ? (
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
-                    <img src={user?.photoURL} />
-                  </div>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="absolute left-0 p-2 mt-3 rounded shadow menu menu-sm dropdown-content bg-base-100 w-52"
-                >
-                  <li>
-                    <button onClick={handleLogout} className="default">
-                      Sign Out
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            ) : (
-              <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Login
-              </NavLink>
-            )}
-          </li>
+                    <li>
+                      {user ? (
+                        <div className="dropdown dropdown-end">
+                          <label
+                            tabIndex={0}
+                            className="btn btn-ghost btn-circle avatar"
+                          >
+                            <div className="w-10 rounded-full">
+                              <img src={user?.photoURL} />
+                            </div>
+                          </label>
+                          <ul
+                            tabIndex={0}
+                            className="absolute left-0 p-2 mt-3 rounded shadow menu menu-sm dropdown-content bg-base-100 w-52"
+                          >
+                            <li>
+                              <button
+                                onClick={handleLogout}
+                                className="default"
+                              >
+                                Sign Out
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      ) : (
+                        <NavLink
+                          to="/login"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Login
+                        </NavLink>
+                      )}
+                    </li>
                   </ul>
                 </nav>
               </div>

@@ -4,6 +4,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const [error, setError] = useState("");
@@ -14,15 +16,17 @@ const Registration = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleSignUp = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const photoUrl = form.photourl.value;
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data) => {
     setError("");
+    const { name, email, password, photourl } = data;
+
     if (password.length < 6 || !/[A-Z]/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
       setError(
         "Your password must be at least 6 characters long, contain at least one capital letter, and one special character."
@@ -38,9 +42,9 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        updateUserData(result.user, name, photoUrl);
+        updateUserData(result.user, name, photourl, email);
         console.log(loggedUser);
-        form.reset();
+        reset();
       })
       .catch((error) => {
         console.log(error);
@@ -48,14 +52,35 @@ const Registration = () => {
       });
   };
 
-  const updateUserData = (user, name, photoUrl) => {
+  const updateUserData = (user, name, photoUrl, email) => {
     updateProfile(user, {
       displayName: name,
       photoURL: photoUrl,
     })
-      .then(() => {
-        console.log("Name and Photo URL updated");
+    .then(() => {
+      const saveUser = { name: name, email: email, photo: photoUrl, role: "student" }
+      fetch('http://127.0.0.1:5000/users', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(saveUser)
       })
+          .then(res => res.json())
+          .then(data => {
+              if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'User created successfully.',
+                      showConfirmButton: false,
+                      timer: 1500
+                  });
+                  navigate(from, { replace: true } || '/');
+              }
+          })
+  })
       .catch((error) => {
         console.log(error.message);
       });
@@ -79,8 +104,7 @@ const Registration = () => {
         <div className="max-w-lg mx-auto">
           <div className="rounded-lg shadow-lg">
             <form
-              onSubmit={handleSignUp}
-              action=""
+              onSubmit={handleSubmit(onSubmit)}
               className="p-4 mt-6 mb-0 space-y-8 sm:p-6 lg:p-8"
             >
               <p className="text-lg font-medium text-center">
@@ -89,7 +113,7 @@ const Registration = () => {
 
               <div>
                 <input
-                  name="name"
+                  {...register("name")}
                   type="text"
                   className="input-style"
                   placeholder="Enter name"
@@ -98,39 +122,45 @@ const Registration = () => {
 
               <div>
                 <input
-                  name="email"
+                  {...register("email", { required: true })}
                   type="email"
                   className="input-style"
                   placeholder="Enter email"
-                  required
                 />
+                {errors.email && (
+                  <span className="text-red-600">Email is required</span>
+                )}
               </div>
 
               <div>
                 <input
-                  name="password"
+                  {...register("password", { required: true })}
                   type="password"
                   className="input-style"
                   placeholder="Enter password"
-                  required
                 />
+                {errors.password && (
+                  <span className="text-red-600">Password is required</span>
+                )}
               </div>
 
               <div>
                 <input
-                  name="confirmPassword"
+                  {...register("confirmPassword", { required: true })}
                   type="password"
                   className="input-style"
                   placeholder="Confirm password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
                 />
+                {errors.confirmPassword && (
+                  <span className="text-red-600">Confirm Password is required</span>
+                )}
               </div>
 
               <div>
                 <input
-                  name="photourl"
+                  {...register("photourl")}
                   type="text"
                   className="input-style"
                   placeholder="Enter Photo Url"

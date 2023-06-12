@@ -7,11 +7,11 @@ const Slider = () => {
         <div className="w-full carousel">
           <div id="slide1" className="relative w-full carousel-item">
             <div className="w-full">
-              <div className="absolute text-white mx-auto left-[10%] top-[25%] z-10">
+              <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Taking yoga Beyond The Limit Reach Your New Potential
                 </h1>
-                <p className="w-2/5 mt-4">
+                <p className="hidden w-2/5 mt-4 xl:block">
                   Yoga is actually exercise of body and mind. The benefits of
                   yoga not only help the body become fresher and fitter, but
                   also control stress.
@@ -39,11 +39,11 @@ const Slider = () => {
 
           <div id="slide2" className="relative w-full carousel-item">
             <div className="w-full">
-              <div className="absolute text-white mx-auto left-[10%] top-[25%] z-10">
+              <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Taking Yoga to the Next Level: Unlock Your Potential
                 </h1>
-                <p className="w-2/5 mt-4">
+                <p className="hidden w-2/5 mt-4 xl:block">
                   Elevate your yoga practice and discover new heights of
                   physical and mental well-being. Experience the transformative
                   benefits of yoga and unleash your true potential.
@@ -71,11 +71,11 @@ const Slider = () => {
 
           <div id="slide3" className="relative w-full carousel-item">
             <div className="w-full">
-              <div className="absolute text-white mx-auto left-[10%] top-[25%] z-10">
+              <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Embrace the Power of Yoga: Harness Inner Strength
                 </h1>
-                <p className="w-2/5 mt-4">
+                <p className="hidden w-2/5 mt-4 xl:block">
                   Yoga is not just about physical exercise; it's a journey of
                   self-discovery and empowerment. Cultivate strength, balance,
                   and resilience both on and off the mat, and embrace your
@@ -103,11 +103,11 @@ const Slider = () => {
           </div>
           <div id="slide4" className="relative w-full carousel-item">
             <div className="w-full">
-              <div className="absolute text-white mx-auto left-[10%] top-[25%] z-10">
+              <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Yoga for Mind and Body Harmony: Find Inner Peace
                 </h1>
-                <p className="w-2/5 mt-4">
+                <p className="hidden w-2/5 mt-4 xl:block">
                   Discover the harmony between your mind and body through the
                   practice of yoga. Cultivate mindfulness, reduce stress, and
                   experience a deep sense of inner peace and tranquility.
@@ -134,11 +134,11 @@ const Slider = () => {
 
           <div id="slide5" className="relative w-full carousel-item">
             <div className="w-full">
-              <div className="absolute text-white mx-auto left-[10%] top-[25%] z-10">
+              <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Elevate Your Yoga Journey: Embrace Transformation
                 </h1>
-                <p className="w-2/5 mt-4">
+                <p className="hidden w-2/5 mt-4 xl:block">
                   Embark on a transformative yoga journey that goes beyond
                   physical exercise. Explore the profound connection between
                   body, mind, and spirit, and embrace personal growth, healing,

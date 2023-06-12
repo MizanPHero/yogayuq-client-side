@@ -4,21 +4,25 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  const handleLogin = (data) => {
+    const { email, password } = data;
 
     setError("");
 
@@ -27,7 +31,7 @@ const Login = () => {
         const loggedUser = result.user;
         navigate(from, { replace: true });
         console.log(loggedUser);
-        form.reset();
+        reset();
       })
       .catch((error) => {
         console.log(error);
@@ -46,6 +50,7 @@ const Login = () => {
         console.log(error);
       });
   };
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -54,35 +59,33 @@ const Login = () => {
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
       <div className="max-w-lg mx-auto">
         <div className="p-4 mt-6 mb-0 space-y-6 rounded-lg shadow-lg sm:p-6 lg:p-8">
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleSubmit(handleLogin)} className="space-y-6">
             <p className="text-lg font-medium text-center text-gray-800">
               Sign in to your account
             </p>
 
             <div>
-              {/* <label className="label">
-                <span className="text-base label-text">Email</span>
-              </label> */}
               <input
-                name="email"
+                {...register("email", { required: true })}
                 type="email"
                 className="input-style"
                 placeholder="Enter email"
-                required
               />
+              {errors.email && (
+                <span className="text-red-600">Email is required</span>
+              )}
             </div>
 
             <div className="relative">
-              {/* <label className="label">
-                <span className="text-base label-text">Password</span>
-              </label> */}
               <input
-                name="password"
+                {...register("password", { required: true })}
                 type={showPassword ? "text" : "password"}
                 className="input-style"
                 placeholder="Enter password"
-                required
               />
+              {errors.password && (
+                <span className="text-red-600">Password is required</span>
+              )}
               <div
                 className="absolute transform -translate-y-1/2 cursor-pointer right-2 top-1/2"
                 onClick={togglePasswordVisibility}
@@ -94,10 +97,7 @@ const Login = () => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="login-btn"
-            >
+            <button type="submit" className="login-btn">
               Sign in
             </button>
           </form>
@@ -111,7 +111,7 @@ const Login = () => {
               Sign in with Google
             </button>
           </div>
-          
+
           <div className="flex flex-col items-center space-y-1">
             <p className="text-sm text-gray-500">
               No account?
