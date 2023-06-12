@@ -8,29 +8,43 @@ const ManageUsers = () => {
     return res.json();
   });
 
-  const handleMakeAdmin = user => {
+  const handleMakeAdmin = (user) => {
     fetch(`http://127.0.0.1:5000/users/admin/${user._id}`, {
-        method: 'PATCH'
+      method: "PATCH",
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.modifiedCount){
-            refetch();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${user.name} is an Admin Now!`,
-                showConfirmButton: false,
-                timer: 1500
-              })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
+      });
+  };
+
+  const handleMakeInstructor = (user) => {
+    fetch(`http://127.0.0.1:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
     })
-  }
-
-  const handleMakeInstructor = user => {
-    
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="w-full overflow-x-auto">
@@ -41,40 +55,42 @@ const ManageUsers = () => {
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Make Instructor</th>
             <th>Make Admin</th>
+            <th>Make Instructor</th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
-          
-            {
-                users.map((user, index) => <tr key={user._id}>
-                <th>{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                <button
-                    onClick={() => handleMakeAdmin(user)}
-                    className={`text-white btn btn-ghost ${user.role !== 'admin' ? 'bg-orange-600' : 'bg-gray-300'}`}
-                    disabled={user.role === 'admin'}
-                    >
-                    Make Admin
-                    </button>
-                </td>
-               <td>
-               <button
-                onClick={() => handleMakeInstructor(user)}
-                className={`text-white btn btn-ghost ${user.role !== 'instructor' ? 'bg-blue-500' : 'bg-gray-300'}`}
-                disabled={user.role === 'instructor'}
-                >
-                Make Instructor
-                </button>
 
-               </td>
-              </tr>)
-            }
-          
+          {users.map((user, index) => (
+            <tr key={user._id}>
+              <th>{index + 1}</th>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>
+                <button
+                  onClick={() => handleMakeAdmin(user)}
+                  className={`text-white btn btn-ghost ${
+                    user.role !== "admin" ? "bg-orange-600" : "bg-gray-300"
+                  }`}
+                  disabled={user.role === "admin"}
+                >
+                  Make Admin
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => handleMakeInstructor(user)}
+                  className={`text-white btn btn-ghost ${
+                    user.role !== "instructor" ? "bg-blue-500" : "bg-gray-300"
+                  }`}
+                  disabled={user.role === "instructor"}
+                >
+                  Make Instructor
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
