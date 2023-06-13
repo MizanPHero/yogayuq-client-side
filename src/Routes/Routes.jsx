@@ -8,6 +8,10 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 
 
 const router = createBrowserRouter([
@@ -55,14 +59,24 @@ const router = createBrowserRouter([
             path: 'manageusers', 
             element: <ManageUsers></ManageUsers>
           },
-        //   {
-        //     path: 'addItem',
-        //     element: <AdminRoute><AddItem></AddItem></AdminRoute>
-        //   },
-        //   {
-        //     path: 'manageitems',
-        //     element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-        //   }
+          {
+            path: 'manageclasses',
+            element: <ManageClasses></ManageClasses>
+          },
+          // instructor routes
+          {
+            path: 'instructorhome',
+            element: <InstructorHome></InstructorHome>
+          },
+          {
+            path: 'addclass',
+            element: <AddClass></AddClass>
+          },
+          {
+            path: 'myclasses',
+            element: <MyClasses></MyClasses>
+          }
+      
         ]
       }
 ])
