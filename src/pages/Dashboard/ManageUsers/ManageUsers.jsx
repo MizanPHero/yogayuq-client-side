@@ -50,7 +50,7 @@ const ManageUsers = () => {
     <div className="w-full overflow-x-auto">
       <table className="table w-full table-zebra">
         {/* head */}
-        <thead className="text-xl text-slate-900">
+        <thead className="text-base text-slate-900">
           <tr>
             <th>#</th>
             <th>Name</th>

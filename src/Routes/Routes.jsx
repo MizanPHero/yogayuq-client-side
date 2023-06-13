@@ -13,6 +13,7 @@ import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
+import SendFeedback from "../pages/Dashboard/SendFeedback/SendFeedback";
 
 
 const router = createBrowserRouter([
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
             path: 'myclasses',
             element: <MyClasses></MyClasses>
           },
+          {
+            path: 'sendfeedback/:id',
+            element: <SendFeedback></SendFeedback>
+          }
           // {
           //   path: 'updateclass/:id',
           //   element: <UpdateClass></UpdateClass>,

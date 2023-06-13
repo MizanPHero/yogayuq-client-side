@@ -1,14 +1,52 @@
-import React from "react";
+import Swal from "sweetalert2";
 import useAllClasses from "../../../hooks/useAllClass";
 
 const ManageClasses = () => {
-  const [classes] = useAllClasses();
-  console.log(classes);
+  const [classes, , refetch] = useAllClasses();
+
+  const handleApprove = (cls) => {
+    fetch(`http://127.0.0.1:5000/class/approve/${cls._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Class Approved Successfully!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleDeny = (cls) => {
+    fetch(`http://127.0.0.1:5000/class/deny/${cls._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Class Denied Successfully!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
-        <thead>
+        <thead className="text-base text-slate-900">
           <tr>
             <th>#</th>
             <th>Class Image</th>
@@ -42,13 +80,38 @@ const ManageClasses = () => {
               <td>{cls.seat}</td>
               <td>{cls.status}</td>
               <td>
-                <button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:bg-blue-600">
+                <button
+                  onClick={() => handleApprove(cls)}
+                  className={`px-4 py-2 text-white rounded-md focus:bg-blue-600 ${
+                    cls.status === "approved" || cls.status === "denied"
+                      ? "bg-gray-300"
+                      : "bg-blue-500 hover:bg-blue-600"
+                  }`}
+                  disabled={
+                    cls.status === "approved" || cls.status === "denied"
+                  }
+                >
                   Approve
                 </button>
               </td>
               <td>
-                <button className="px-4 py-2 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:bg-orange-700">
+                <button
+                  onClick={() => handleDeny(cls)}
+                  className={`px-4 py-2 text-white rounded-md focus:bg-orange-700 ${
+                    cls.status === "approved" || cls.status === "denied"
+                      ? "bg-gray-300"
+                      : "bg-orange-600 hover:bg-orange-700"
+                  }`}
+                  disabled={
+                    cls.status === "approved" || cls.status === "denied"
+                  }
+                >
                   Deny
+                </button>
+              </td>
+              <td>
+                <button className="px-4 py-2 text-white bg-green-500 rounded-md min-w-max hover:bg-green-600 focus:bg-green-600">
+                  Send Feedback
                 </button>
               </td>
             </tr>
