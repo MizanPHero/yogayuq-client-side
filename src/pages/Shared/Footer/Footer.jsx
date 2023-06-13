@@ -14,21 +14,21 @@ const Footer = () => {
     <footer className="relative pt-8 pb-6 my-container bg-blueGray-200">
       <div className="container px-4 mx-auto">
         <div className="flex flex-wrap text-left lg:text-left">
-          <div className="w-full px-4 lg:w-4/12">
+          <div className="w-full px-4 space-y-3 lg:w-4/12">
             <Link to="/" className="items-center flex-1 inline-block">
               <img className="h-8" src={yogayuq} alt="" />
               <span className="text-2xl font-bold tracking-wide text-gray-800">
                Yogayuq
               </span>
             </Link>
-            <h5 className="mt-0 mb-2 text-lg text-blueGray-600">
-              Where Imagination Meets Action
+            <h5 className="mt-0 mb-2 lg:w-[70%] text-lg text-blueGray-600">
+            Taking yoga Beyond The Limit Reach Your New Potential
             </h5>
           </div>
           <div className="w-full px-4 lg:w-4/12">
             <div className="flex flex-wrap mb-6 items-top">
               <div className="w-full px-4 lg:w-4/12">
-                <span className="block mb-2 text-sm font-semibold text-red-600 uppercase">
+                <span className="block mb-2 text-sm font-semibold text-[#7fb71e] uppercase">
                   Resources
                 </span>
                 <ul className="list-unstyled">
@@ -68,7 +68,7 @@ const Footer = () => {
               </div>
 
               <div className="w-full px-4 lg:w-4/12">
-                <span className="block mb-2 text-sm font-semibold text-red-600 uppercase">
+                <span className="block mb-2 text-sm font-semibold text-[#7fb71e] uppercase">
                   Courses
                 </span>
                 <ul className="list-unstyled">
@@ -108,13 +108,13 @@ const Footer = () => {
               </div>
 
               <div className="w-full px-4 lg:w-4/12">
-                <span className="block mb-2 text-sm font-semibold text-red-600 uppercase">
+                <span className="block mb-2 text-sm font-semibold text-[#7fb71e] uppercase">
                   Your Path to Wellness
                 </span>
                 <ul className="list-unstyled">
                   <li>
                     <a
-                      className="block pb-2 text-sm italic font-semibold text-blueGray-600 hover:text-blueGray-800"
+                      className="block pb-2 text-sm font-semibold text-blueGray-600 hover:text-blueGray-800"
                       href=""
                     >
                       Health Articles
@@ -122,7 +122,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      className="block pb-2 text-sm italic font-semibold text-blueGray-600 hover:text-blueGray-800"
+                      className="block pb-2 text-sm font-semibold text-blueGray-600 hover:text-blueGray-800"
                       href=""
                     >
                       Nutritional Tips
@@ -130,7 +130,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      className="block pb-2 text-sm italic font-semibold text-blueGray-600 hover:text-blueGray-800"
+                      className="block pb-2 text-sm font-semibold text-blueGray-600 hover:text-blueGray-800"
                       href=""
                     >
                       Mindfulness Resources
@@ -141,7 +141,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="w-full px-4 lg:w-4/12">
-            <h1 className="block mb-2 text-sm font-semibold text-center text-red-600 uppercase">
+            <h1 className="block mb-2 text-sm font-semibold text-center text-[#7fb71e] uppercase">
               Find Us on Social Media
             </h1>
             <div className="mt-6 mb-6 text-center lg:mb-0">
