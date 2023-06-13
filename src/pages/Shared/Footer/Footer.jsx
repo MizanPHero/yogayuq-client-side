@@ -184,7 +184,7 @@ const Footer = () => {
                 target="blank"
               >
                 {" "}
-                Toy Fusion by
+                Yogayuq by
               </a>
               <br />
               <a href="" className="text-blueGray-500 hover:text-blueGray-800">

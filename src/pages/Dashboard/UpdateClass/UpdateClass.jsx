@@ -1,85 +1,22 @@
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+const UpdateClass = () => {
+    const cls = useLoaderData();
+    console.log(cls);
 
-const AddClass = () => {
-  const { user } = useContext(AuthContext);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+    const onSubmit = (data) => {
+       console.log(data);
+      };
 
-  const onSubmit = (data) => {
-    data.status = "pending";
-    data.enrolled = 0;
-    data.feedback = "";
-    console.log(data);
 
-    const formData = new FormData();
-    formData.append("image", data.classImage[0]);
 
-    fetch(img_hosting_url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgResponse) => {
-        if (imgResponse.success) {
-          const classImage = imgResponse.data.display_url;
-          const {
-            instructorName,
-            instructorEmail,
-            className,
-            enrolled,
-            status,
-            price,
-            seat,
-            feedback,
-          } = data;
-          const newItem = {
-            className,
-            classImage,
-            instructorName,
-            instructorEmail,
-            enrolled: parseFloat(enrolled),
-            seat: parseFloat(seat),
-            status,
-            feedback,
-            price: parseFloat(price),
-          };
-          console.log(newItem);
-          fetch("http://127.0.0.1:5000/classes", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newItem),
-          })
-            .then((res) => res.json())
-            .then((result) => {
-              if (result.insertedId) {
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: "Class Added successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                reset();
-              }
-            });
-        }
-      });
-  };
 
-  return (
-    <div className="w-[60%] text-center rounded bg-slate-50 my-container">
+
+    return (
+        <div className="w-[60%] text-center rounded bg-slate-50 my-container">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <p className="mb-4 text-3xl font-medium text-center">Add a Class</p>
+        <p className="mb-4 text-3xl font-medium text-center">Update Class</p>
         {/* register your input into the hook by invoking the "register" function */}
         <div>
           <input
@@ -164,7 +101,7 @@ const AddClass = () => {
         <input value="Add Class" className="mt-5 btn-primary" type="submit" />
       </form>
     </div>
-  );
+    );
 };
 
-export default AddClass;
+export default UpdateClass;
