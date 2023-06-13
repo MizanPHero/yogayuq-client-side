@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-    const isAdmin = false;
-    const isInstructor = true;
+    const isAdmin = true;
+    const isInstructor = false;
     
   return (
     <div>

@@ -77,11 +77,11 @@ const router = createBrowserRouter([
             path: 'myclasses',
             element: <MyClasses></MyClasses>
           },
-          {
-            path: 'updateclass/:id',
-            element: <UpdateClass></UpdateClass>,
-            loader: ({params}) => fetch(`http://127.0.0.1:5000/class/${params.id}`)
-          }
+          // {
+          //   path: 'updateclass/:id',
+          //   element: <UpdateClass></UpdateClass>,
+          //   loader: ({params}) => fetch(`http://127.0.0.1:5000/class/${params.id}`)
+          // }
       
         ]
       }

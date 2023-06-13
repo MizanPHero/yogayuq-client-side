@@ -33,7 +33,9 @@ const MyClasses = () => {
               <td>{cls.status}</td>
               <td>{cls.feedback}</td>
               <td>
-                <Link to={`../updateclass/${cls._id}`}><button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:bg-blue-600">
+                <Link to="#"
+                // {`../updateclass/${cls._id}`}
+                ><button className="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:bg-blue-600">
                   Update
                 </button>
                 </Link>
