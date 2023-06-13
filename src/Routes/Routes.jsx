@@ -12,7 +12,6 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import InstructorHome from "../pages/Dashboard/InstructorHome/InstructorHome";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
-import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
 import SendFeedback from "../pages/Dashboard/SendFeedback/SendFeedback";
 
 
@@ -65,6 +64,13 @@ const router = createBrowserRouter([
             path: 'manageclasses',
             element: <ManageClasses></ManageClasses>
           },
+          {
+            path: 'sendfeedback/:id',
+            element: <SendFeedback></SendFeedback>,
+            loader: ({params}) => fetch(`http://127.0.0.1:5000/classfeedback/${params.id}`)
+          },
+
+
           // instructor routes
           {
             path: 'instructorhome',
@@ -77,16 +83,8 @@ const router = createBrowserRouter([
           {
             path: 'myclasses',
             element: <MyClasses></MyClasses>
-          },
-          {
-            path: 'sendfeedback/:id',
-            element: <SendFeedback></SendFeedback>
           }
-          // {
-          //   path: 'updateclass/:id',
-          //   element: <UpdateClass></UpdateClass>,
-          //   loader: ({params}) => fetch(`http://127.0.0.1:5000/class/${params.id}`)
-          // }
+          
       
         ]
       }

@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAllClasses from "../../../hooks/useAllClass";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
   const [classes, , refetch] = useAllClasses();
@@ -110,9 +111,12 @@ const ManageClasses = () => {
                 </button>
               </td>
               <td>
-                <button className="px-4 py-2 text-white bg-green-500 rounded-md min-w-max hover:bg-green-600 focus:bg-green-600">
+
+                <Link to={`../sendfeedback/${cls._id}`}><button className="px-4 py-2 text-white bg-green-500 rounded-md min-w-max hover:bg-green-600 focus:bg-green-600">
                   Send Feedback
                 </button>
+                </Link>
+                
               </td>
             </tr>
           ))}
