@@ -17,7 +17,7 @@ import InstructorAll from "../pages/InstructorAll/InstructorAll";
 import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
-import ClassAll from "../pages/ClassAll/ClassAll";
+import ClassAll from "../pages/Dashboard/ClassAll/ClassAll";
 
 const router = createBrowserRouter([
   {

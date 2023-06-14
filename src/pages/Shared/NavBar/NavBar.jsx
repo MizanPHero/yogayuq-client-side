@@ -3,9 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import yogayuq from "../../../assets/hemp-logo_727906-14 (2).png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const handleLogout = () => {
     logOut()
@@ -49,13 +54,14 @@ const NavBar = () => {
           {user && (
             <li>
               <NavLink
-                to="/dashboard"
+                to={isAdmin ? "/dashboard/adminhome" : (isInstructor ? "/dashboard/instructorhome" : "/dashboard/studenthome")}
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
                 Dashboard
               </NavLink>
             </li>
           )}
+
 
           <li>
             {user ? (

@@ -1,10 +1,13 @@
 import { faBook, faBookOpen, faCircleCheck, faCircleLeft, faHouseUser, faList, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-    const isAdmin = false;
-    const isInstructor = false;
+    // const isAdmin = false;
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     
   return (
     <div>
