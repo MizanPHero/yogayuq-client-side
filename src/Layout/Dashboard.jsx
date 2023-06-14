@@ -1,9 +1,9 @@
-import { faBook, faBookOpen, faCircleLeft, faHouseUser, faList, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faBookOpen, faCircleCheck, faCircleLeft, faHouseUser, faList, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const isAdmin = false;
     const isInstructor = false;
     
   return (
@@ -42,7 +42,10 @@ const Dashboard = () => {
       )}
       {!isInstructor && (
         <>
-          <li><NavLink to="/dashboard/studentlists"><FontAwesomeIcon icon={faList} />Student Lists</NavLink></li>
+          <li><NavLink to="/dashboard/studenthome"><FontAwesomeIcon icon={faHouseUser} />Student Home</NavLink></li>
+          <li><NavLink to="/dashboard/myselectedclass"><FontAwesomeIcon icon={faBookOpen} />My Selected Class</NavLink></li>
+          <li><NavLink to="/dashboard/enrolledclass"><FontAwesomeIcon icon={faCircleCheck} />My Enrolled Class</NavLink></li>
+          <li><NavLink to="/"><FontAwesomeIcon icon={faCircleLeft} />Back to Home Page</NavLink></li>
         </>
       )}
     </>

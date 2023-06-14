@@ -1,11 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import Card from "../../Home/PopularClass/Card";
+import Card from "../Home/PopularClass/Card";
+import useAllClasses from "../../hooks/useAllClass";
 
 const ClassAll = () => {
-  const { data: classes = [] } = useQuery(["popularclasses"], async () => {
-    const res = await fetch("http://127.0.0.1:5000/classesall");
-    return res.json();
-  });
+
+  const [classes, ] = useAllClasses();
 
   return (
     <div className="my-container">

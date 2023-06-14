@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import InstructorCard from "./InstructorCard";
 const InstructorAll = () => {
+
   const { data: instructors = [] } = useQuery(["allinstructor"], async () => {
     const res = await fetch("http://127.0.0.1:5000/users/instructors");
     return res.json();
   });
+  
 //   console.log(instructors);
   return (
     <div className="my-container">

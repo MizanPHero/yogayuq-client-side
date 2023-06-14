@@ -9,14 +9,14 @@ const Card = ({ cls }) => {
   const location = useLocation();
   const { user } = useContext(AuthContext);
   // eslint-disable-next-line react/prop-types
-  const { _id, className, classImage, instructorName, price, enrolled, seat } =
+  const { _id, className, classImage, instructorName, instructorEmail , price, enrolled, seat } =
     cls;
 
   const handleAddToCart = (item) => {
     // console.log(item);
     if (user && user.email) {
       const cartItem = {
-        classId: _id, className, classImage, price, email: user.email,
+        classId: _id, className, classImage, instructorName, seat, instructorEmail, price, email: user.email,
       };
       fetch("http://127.0.0.1:5000/carts", {
         method: "POST",
