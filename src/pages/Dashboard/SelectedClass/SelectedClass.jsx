@@ -1,12 +1,17 @@
 import Swal from "sweetalert2";
 import useSelectedClass from "../../../hooks/useSelectedClass";
+import { useNavigate } from "react-router-dom";
 
 const SelectedClass = () => {
   const [carts, ,refetch] = useSelectedClass();
   // console.log(carts);
+  const navigate = useNavigate();
 
   const handlePayment = (item) => {
-    console.log(item);
+   
+    navigate("/dashboard/payment", {
+      state: item
+    })
   }
 
   const handleDelete = (item) => {

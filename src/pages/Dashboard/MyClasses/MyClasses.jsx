@@ -12,9 +12,9 @@ const MyClasses = () => {
           <tr>
             <th>#</th>
             <th>Class Name</th>
-            <th>Seats</th>
+            <th>Available Seats</th>
             <th>Price</th>
-            <th>Enrolled</th>
+            <th>Total Enrolled</th>
             <th>Status</th>
             <th>Feedback</th>
             <th>Update</th>

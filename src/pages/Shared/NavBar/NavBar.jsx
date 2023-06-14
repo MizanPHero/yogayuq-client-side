@@ -159,16 +159,16 @@ const NavBar = () => {
                         Classes
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink
-                        to="/dashboard"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
-                      >
-                        Dashboard
-                      </NavLink>
-                    </li>
+                    {user && (
+            <li>
+              <NavLink
+                to={isAdmin ? "/dashboard/adminhome" : (isInstructor ? "/dashboard/instructorhome" : "/dashboard/studenthome")}
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
 
                     <li>
                       {user ? (

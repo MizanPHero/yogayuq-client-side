@@ -18,6 +18,7 @@ import StudentHome from "../pages/Dashboard/StudentHome/StudentHome";
 import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/EnrolledClass/EnrolledClass";
 import ClassAll from "../pages/Dashboard/ClassAll/ClassAll";
+import Payment from "../pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -58,32 +59,36 @@ const router = createBrowserRouter([
       //student routes
       {
         path: "studenthome",
-        element: <StudentHome></StudentHome>,
+        element: <PrivateRoute><StudentHome/></PrivateRoute>,
       },
       {
         path: "myselectedclass",
-        element: <SelectedClass></SelectedClass>
+        element: <PrivateRoute><SelectedClass/></PrivateRoute>
       },
       {
         path: "enrolledclass",
-        element: <EnrolledClass></EnrolledClass>
+        element: <PrivateRoute><EnrolledClass/></PrivateRoute>
+      },
+      {
+        path: "payment",
+        element: <Payment/>
       },
       // admin routes
       {
         path: "adminhome",
-        element: <AdminHome></AdminHome>,
+        element: <PrivateRoute><AdminHome/></PrivateRoute>,
       },
       {
         path: "manageusers",
-        element: <ManageUsers></ManageUsers>,
+        element: <PrivateRoute><ManageUsers/></PrivateRoute>,
       },
       {
         path: "manageclasses",
-        element: <ManageClasses></ManageClasses>,
+        element: <PrivateRoute><ManageClasses/></PrivateRoute>,
       },
       {
         path: "sendfeedback/:id",
-        element: <SendFeedback></SendFeedback>,
+        element: <PrivateRoute><SendFeedback/></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://127.0.0.1:5000/classfeedback/${params.id}`),
       },
@@ -91,15 +96,15 @@ const router = createBrowserRouter([
       // instructor routes
       {
         path: "instructorhome",
-        element: <InstructorHome></InstructorHome>,
+        element: <PrivateRoute><InstructorHome/></PrivateRoute>,
       },
       {
         path: "addclass",
-        element: <AddClass></AddClass>,
+        element: <PrivateRoute><AddClass/></PrivateRoute>,
       },
       {
         path: "myclasses",
-        element: <MyClasses></MyClasses>,
+        element: <PrivateRoute><MyClasses/></PrivateRoute>,
       },
     ],
   },

@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Slider = () => {
   return (
@@ -7,6 +8,7 @@ const Slider = () => {
         <div className="w-full carousel">
           <div id="slide1" className="relative w-full carousel-item">
             <div className="w-full">
+              
               <div className="absolute text-white hidden lg:block mx-auto left-[10%] top-[25%] z-10">
                 <h1 className="w-2/5 text-5xl font-medium leading-normal">
                   Taking yoga Beyond The Limit Reach Your New Potential
@@ -17,6 +19,7 @@ const Slider = () => {
                   also control stress.
                 </p>
               </div>
+        
               <div className="relative w-full">
                 <div className="absolute inset-0 z-0 bg-gradient-to-r from-neutral-900 to-transparent"></div>
                 <img
