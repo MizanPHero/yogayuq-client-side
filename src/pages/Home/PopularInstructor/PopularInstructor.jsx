@@ -1,3 +1,4 @@
+import { Rotate } from "react-awesome-reveal";
 import InstructorCard from "../../InstructorAll/InstructorCard";
 import { useQuery } from "@tanstack/react-query";
 
@@ -14,9 +15,11 @@ const PopularInstructor = () => {
           Popular Instructors
         </h1>
         <div className="grid grid-cols-1 mt-8 md:grid-cols-3">
+          <Rotate>
           {slicedInstructors.map((instructor) => (
             <InstructorCard key={instructor._id} instructor={instructor} />
           ))}
+          </Rotate>
         </div>
       </div>
     </div>

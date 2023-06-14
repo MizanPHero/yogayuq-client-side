@@ -2,21 +2,41 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useInstructor from "../../../hooks/useInstructor";
+import useAdmin from "../../../hooks/useAdmin";
 
 // eslint-disable-next-line react/prop-types
 const Card = ({ cls }) => {
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useContext(AuthContext);
   // eslint-disable-next-line react/prop-types
-  const { _id, className, classImage, instructorName, instructorEmail , price, enrolled, seat } =
-    cls;
+  const {
+    _id,
+    className,
+    classImage,
+    instructorName,
+    instructorEmail,
+    price,
+    enrolled,
+    seat,
+  } = cls;
 
   const handleAddToCart = (item) => {
     // console.log(item);
     if (user && user.email) {
       const cartItem = {
-        classId: _id, className, classImage, instructorName, seat, instructorEmail, price, email: user.email,
+        classId: _id,
+        className,
+        classImage,
+        instructorName,
+        seat,
+        instructorEmail,
+        price,
+        email: user.email,
       };
       fetch("http://127.0.0.1:5000/carts", {
         method: "POST",
@@ -77,12 +97,13 @@ const Card = ({ cls }) => {
               </p>
             </div>
             <div className="flex p-4 pt-0 text-gray-700 ">
-              <button
-                onClick={() => handleAddToCart(cls)}
-                className="font-medium btn-primary"
-              >
-                Select
-              </button>
+            <button
+  onClick={() => handleAddToCart(cls)}
+  className={`font-medium ${isAdmin || isInstructor ? 'btn-disabled' : 'btn-primary'}`}
+  disabled={isAdmin || isInstructor}
+>
+  Select
+</button>
             </div>
           </div>
         </div>

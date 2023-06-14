@@ -1,3 +1,4 @@
+import { Slide } from 'react-awesome-reveal';
 import FreeCourse from '../FreeCourse/FreeCourse';
 import PopularClass from '../PopularClass/PopularClass';
 import PopularInstructor from '../PopularInstructor/PopularInstructor';
@@ -11,7 +12,9 @@ const Home = () => {
         <Slider/>
         <PopularClass/>
         <PopularInstructor/>
+        <Slide direction='left'>
         <Syllabus/>
+        </Slide>
         <FreeCourse/>
         </>
     );

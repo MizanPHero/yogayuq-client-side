@@ -1,5 +1,6 @@
 import Card from "../../Home/PopularClass/Card";
 import useAllClasses from "../../../hooks/useAllClass";
+import { Fade } from "react-awesome-reveal";
 
 const ClassAll = () => {
 
@@ -11,9 +12,11 @@ const ClassAll = () => {
         All Class
       </h1>
       <div className="grid grid-cols-1 mt-8 md:grid-cols-3">
+        <Fade cascade>
         {classes.map((cls) => (
           <Card key={cls._id} cls={cls} />
         ))}
+        </Fade>
       </div>
     </div>
   );
