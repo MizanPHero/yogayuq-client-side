@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal";
 
 const PopularClass = () => {
   const { data: classes = [] } = useQuery(["popularclasses"], async () => {
-    const res = await fetch("http://127.0.0.1:5000/popularclasses");
+    const res = await fetch("https://summer-camp-server-eta-sandy.vercel.app/popularclasses");
     return res.json();
   });
   const slicedClasses = classes.slice(0, 6);

@@ -25,7 +25,7 @@ const SelectedClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://127.0.0.1:5000/carts/${item._id}`, {
+        fetch(`https://summer-camp-server-eta-sandy.vercel.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

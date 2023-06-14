@@ -90,7 +90,7 @@ const router = createBrowserRouter([
         path: "sendfeedback/:id",
         element: <PrivateRoute><SendFeedback/></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://127.0.0.1:5000/classfeedback/${params.id}`),
+          fetch(`https://summer-camp-server-eta-sandy.vercel.app/classfeedback/${params.id}`),
       },
 
       // instructor routes

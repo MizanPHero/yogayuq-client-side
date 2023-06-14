@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import Swal from "sweetalert2";
@@ -38,7 +39,7 @@ const Card = ({ cls }) => {
         price,
         email: user.email,
       };
-      fetch("http://127.0.0.1:5000/carts", {
+      fetch("https://summer-camp-server-eta-sandy.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

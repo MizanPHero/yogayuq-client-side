@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const PopularInstructor = () => {
   const { data: instructors = [] } = useQuery(["allinstructor"], async () => {
-    const res = await fetch("http://127.0.0.1:5000/users/instructors");
+    const res = await fetch("https://summer-camp-server-eta-sandy.vercel.app/users/instructors");
     return res.json();
   });
   const slicedInstructors = instructors.slice(0, 6);

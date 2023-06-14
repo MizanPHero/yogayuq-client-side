@@ -6,7 +6,7 @@ const ManageClasses = () => {
   const [classes, , refetch] = useAllClasses();
 
   const handleApprove = (cls) => {
-    fetch(`http://127.0.0.1:5000/class/approve/${cls._id}`, {
+    fetch(`https://summer-camp-server-eta-sandy.vercel.app/class/approve/${cls._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -25,7 +25,7 @@ const ManageClasses = () => {
   };
 
   const handleDeny = (cls) => {
-    fetch(`http://127.0.0.1:5000/class/deny/${cls._id}`, {
+    fetch(`https://summer-camp-server-eta-sandy.vercel.app/class/deny/${cls._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

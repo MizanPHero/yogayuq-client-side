@@ -68,7 +68,7 @@ const Registration = () => {
           photo: photoUrl,
           role: "student",
         };
-        fetch("http://127.0.0.1:5000/users", {
+        fetch("https://summer-camp-server-eta-sandy.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -108,7 +108,7 @@ const Registration = () => {
         };
 
         console.log(loggedInUser);
-        fetch("http://127.0.0.1:5000/users", {
+        fetch("https://summer-camp-server-eta-sandy.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
